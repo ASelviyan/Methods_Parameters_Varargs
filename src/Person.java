@@ -5,6 +5,7 @@
     //Methods are used to perform certain actions, and they are also known as functions.
     //You can pass data, known as parameters, into a method.
     //a method can take zero or more inputs, and it can return zero or one inputs
+    //methods can only be used if an object of the class is created and then that object can use the classes methods unless you create a static method(#6)
 //#2: Functions vs methods
     //Function — a set of instructions that perform a task. Method — a set of instructions that are associated with an object/class
 //#3: Methods return values
@@ -20,6 +21,9 @@
 //#5: parameters
     //Information can be passed to methods as parameter. Parameters act as variables inside the method.
     //Parameters are specified after the method name, inside the parentheses. You can add as many parameters as you want, just separate them with a comma.
+//#6: Static method
+    //A static method is a method that belongs to a class rather than an instance of a class (object). This means you can call a static method without creating an object of the class. Static methods are sometimes called class methods.
+
 public class Person {
     private String middleName ="Selvi";
 
@@ -73,6 +77,11 @@ public class Person {
 
 
     //the main method is here so that it can run the program. Usually its placed in a class of its own but for the simplicity its here
+    //STATIC METHOD(#6)
+    //in java the default starting point has to be a method that is public and static
+    //one reason for making a method static is so that you can use it as the entry point or starting of a program.So you cannot run the program if you don't have a static method like main
+    //another case where you can sue static methods is called unity class. Which is a class that has a lot of useful methods in them that help to get things done.
+    //there are others way to use static methods that I might see later on
     public static void main(String[] args){
         //creating an object of a person my using the person blueprint
         Person p1 = new Person();
@@ -91,8 +100,6 @@ public class Person {
         //for this to work the vararg has to be the last argument
         //java will understand that the last arguments is the vararg and the first two are num1 and num2
         p1.test3(5,2, "one", "two", "three");
-
-
 
     }
 
