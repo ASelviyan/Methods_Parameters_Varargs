@@ -1,4 +1,4 @@
-//DEFINITIONS
+//DEFINITIONS ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //#1: Methods
     //A method is a block of code where work gets done
     //A method is a block of code which only runs when it is called.
@@ -23,10 +23,57 @@
     //Parameters are specified after the method name, inside the parentheses. You can add as many parameters as you want, just separate them with a comma.
 //#6: Static method
     //A static method is a method that belongs to a class rather than an instance of a class (object). This means you can call a static method without creating an object of the class. Static methods are sometimes called class methods.
+//#7: Static Variable
+    //is a variable which belongs to the class and initialized only once at the start of the execution. It is a variable which belongs to the class and not to object(instance)
+//#8: Static Initializers
+    //is a field that lets you create complex data
+//ENDING FOR DEFINITIONS----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 public class Person {
-    private String middleName ="Selvi";
 
+//STATIC VARIABLE/FIELDS-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    private String middleName ="Selvi";
+    //this is a static variable(#7) which can be used in anywhere because it can exist prior to the existence of an object or a class instance. You can see this in method main and test
+    //none static variable like the one above can only exist after the object or intense of class has been created
+    //all class instances us the same static method which means they get one copy of the PI variable to share amongst all of them
+    //however the none static members variables belong to their own instance of the Person class so each object has its own middle name variable
+    public double PI = 3.14;
+
+//ENDING FOR STATIC VARIABLE-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+//STATIC INITIALIZER------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //if you wanted to have a big set of data but you cant fit it in one line you can create a static initializer(#8)
+    //here we initialize the array, and then we assigned variables to it in the static initializer(#8)
+    public static int[] nums = initNums();
+
+    //when java sees the static initializer it will run the block of code like it's a method. it will do this as soon as you declare the class that its in
+    //ANATOMY OF A STATIC INITIALIZER
+        //A static initialization block starts with the static keyword and has braces, { }.
+        //inside the braces you put the data that you need
+    static {
+        nums = new int[5];
+        nums[0] = 3;
+        nums[1] = 2;
+        nums[2] = 4;
+        nums[3] = 7;
+        nums[4] = 1;
+    }
+    //another way you can create a static initializer is by putting in a traditional method
+    //this one is more obvious on how it works
+    public static int[] initNums() {
+        int[] nums = new int[5];
+        nums[0] = 3;
+        nums[1] = 2;
+        nums[2] = 4;
+        nums[3] = 7;
+        nums[4] = 1;
+    }
+//ENDING FOR STATIC INITIALIZER------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+//METHODS------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //ANATOMY OF A METHOD
         //first comes the access modifiers
         //then next bit is declaring what kind of data this method can output(#3)
@@ -44,19 +91,26 @@ public class Person {
         return middleName.charAt(0);
     }
 
+
+//PARAMETERS---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //here is an example of how to use parameters
     // first you have to declare what kind of data type the parameters is
     // then the name of parameter (#5)
     public int add(int num1, int num2){
         return num1 + num2;
     }
+//ENDING FOR PARAMETERS---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    //this methods will show how to take any number of inputs if you don't know how many inputs you will receive
+
+//MULTIPLE VALUES---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //this methods will show how to take any number of inputs(parameters) if you don't know how many inputs you will receive
     //another example of this is in the main method (String[] args)
     //1)there is two ways you can do this the first way you create an array and then the name of the parameter
     public void test(String[] words){
         //do something clever with words
     }
+
+//VARARGS---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //2) the second way is to use the varargs(variable number of arguments) technic.
     //this method is a lot simpler the then example above
     //ANATOMY OF VARARGS
@@ -68,6 +122,7 @@ public class Person {
         //do something clever with words
     }
 
+
     //here is an example with more than just the varargs in the parameter
     //for this to work the vararg has to be the last parameter
     public void test3(int num1, int num2, String... words){
@@ -75,13 +130,16 @@ public class Person {
         System.out.println(words[0]);
     }
 
+//ENDING FOR VARARGS-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//ENDING FOR MULTIPLE VALUES-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    //the main method is here so that it can run the program. Usually its placed in a class of its own but for the simplicity its here
-    //STATIC METHOD(#6)
+//STATIC METHOD(#6)
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //in java the default starting point has to be a method that is public and static
     //one reason for making a method static is so that you can use it as the entry point or starting of a program.So you cannot run the program if you don't have a static method like main
     //another case where you can sue static methods is called unity class. Which is a class that has a lot of useful methods in them that help to get things done.
     //there are others way to use static methods that I might see later on
+  //the main method is here so that it can run the program. Usually its placed in a class of its own but for the simplicity its here
     public static void main(String[] args){
         //creating an object of a person my using the person blueprint
         Person p1 = new Person();
@@ -100,7 +158,9 @@ public class Person {
         //for this to work the vararg has to be the last argument
         //java will understand that the last arguments is the vararg and the first two are num1 and num2
         p1.test3(5,2, "one", "two", "three");
+        System.out.println(Person.PI);
 
     }
-
+//ENDING FOR STATIC METHODS-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//ENDING FOR METHODS-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 }
